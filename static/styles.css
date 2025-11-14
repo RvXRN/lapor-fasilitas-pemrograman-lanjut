@@ -1,0 +1,494 @@
+/* ============================
+   Global Styles
+============================ */
+body {
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+    transition: background 0.25s, color 0.25s;
+}
+
+html, body {
+    overflow-x: hidden; /* Hilangkan scroll horizontal */
+}
+
+/* ============================
+   Sidebar Styles
+============================ */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 15rem;
+    background-color: #212529; /* Hitam keabu-abuan */
+    margin-left: 0;
+    transition: margin 0.25s ease-out;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+}
+
+/* Item Sidebar */
+.list-group-item {
+    color: #f8f9fa;
+    background-color: transparent;
+    border: none;
+    padding: 12px 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #343a40 !important;
+    color: #ffc107 !important; /* Kuning keemasan */
+}
+
+.list-group-item.active {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+}
+
+/* ============================
+   Page Content
+============================ */
+#page-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    z-index: 1000;
+}
+
+/* ============================
+   Flash Messages
+============================ */
+.alert {
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* ============================
+   Login Page Styles
+============================ */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Login */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Card */
+.card-header {
+    border-bottom: none;
+    background: linear-gradient(135deg, #198754, #157347);
+}
+
+.login-title {
+    margin-top: -10px; /* Naikkan posisi ke atas */
+    margin-bottom: 15px; /* Jarak bawah pas */
+}
+
+/* Tombol */
+.btn-success {
+    background-color: #198754;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+}
+
+/* Toggle Password Icon */
+#togglePassword {
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+#togglePassword:hover {
+    background-color: #198754;
+    color: #fff;
+}
+
+/* Input Focus */
+.input-group .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.15rem rgba(25, 135, 84, 0.25);
+}
+
+/* Link kecil (daftar, lupa password) */
+.text-muted a {
+    color: #198754;
+}
+
+.text-muted a:hover {
+    color: #0d6efd;
+}
+
+/* Footer kecil di bawah card */
+.card-footer {
+    background: transparent;
+    border-top: none;
+}
+
+.modal-content {
+    border-radius: 18px;
+}
+.modal-header.bg-warning-subtle {
+    background: #fffbe9;
+    border-bottom: 0;
+}
+.modal-footer .btn {
+    min-width: 90px;
+}
+
+/* ============================
+   Forgot Password Page Styles
+============================ */
+
+/* Khusus card forgot agar tampil menonjol */
+.forgot-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7fafd; /* lebih cerah dari login/register */
+}
+
+.forgot-card {
+    min-width: 340px;
+    max-width: 410px;
+    margin: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(25, 135, 84, 0.09);
+    background: #fff;
+    padding-bottom: 0.5rem;
+    animation: fadeInCard 0.6s;
+}
+
+@keyframes fadeInCard {
+    from { transform: translateY(40px); opacity: 0;}
+    to   { transform: translateY(0); opacity: 1;}
+}
+
+.forgot-card .card-header {
+    background: linear-gradient(135deg, #198754, #43c59e);
+    color: #fff;
+    text-align: center;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.09);
+    padding: 1.2rem 1rem 0.8rem 1rem;
+}
+
+.forgot-card .login-title {
+    margin-top: -4px;
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.forgot-card .form-label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.forgot-card .form-control {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 8px 12px;
+    min-height: 38px;
+    border: 1.5px solid #43c59e;
+}
+
+.forgot-card .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.10rem rgba(25, 135, 84, 0.13);
+}
+
+.forgot-card .btn-primary {
+    background-color: #1574e8;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    border: none;
+    margin-bottom: 2px;
+}
+
+.forgot-card .btn-primary:hover {
+    background-color: #125cc4;
+    color: #fff;
+}
+
+.forgot-card .card-footer {
+    background: transparent;
+    border-top: none;
+    text-align: center;
+    font-size: 0.97rem;
+    margin-top: 4px;
+    color: #222;
+}
+
+.forgot-card .card-footer a {
+    color: #198754;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.forgot-card .card-footer a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.btn[disabled], button[disabled], input[disabled] {
+    opacity: 0.65 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
+
+/* Untuk field password dengan icon */
+.form-control.with-eye {
+    padding-right: 2.6rem;
+}
+
+.input-eye-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #26995b;
+    font-size: 1.35rem;
+    cursor: pointer;
+    opacity: 0.82;
+    transition: color 0.2s, opacity 0.2s;
+    z-index: 3;
+}
+.input-eye-icon:hover {
+    color: #174526;
+    opacity: 1;
+}
+
+.input-group-text {
+    background: #eaf9f1;
+    border-color: #43c59e;
+    color: #198754;
+    transition: 0.2s;
+}
+.input-group-text:hover {
+    background: #d5ffe5;
+    color: #0d6efd;
+}
+
+
+/* Responsive khusus forgot card */
+@media (max-width: 480px) {
+    .forgot-card {
+        min-width: unset;
+        width: 98%;
+        margin: 1.2rem 0.5rem;
+        box-shadow: 0 2px 8px rgba(25,135,84,0.07);
+    }
+    .forgot-card .login-title {
+        font-size: 1.08rem;
+    }
+}
+
+.reset-link-box {
+    background-color: #f8fff8;
+    padding: 0.9rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(60,150,80,0.06);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    word-break: break-all;
+    text-align: center;
+}
+
+.reset-link-box a {
+    color: #26995b;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1rem;
+    word-break: break-all;
+}
+
+
+/* ============================
+   Responsiveness
+============================ */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    .card {
+        margin: 0 1rem;
+    }
+}
+
+.sidebar-desc {
+    white-space: nowrap;
+    font-size: 0.85rem;  /* Lebih kecil dari default */
+    color: #eee;
+    width: 100%;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
+#sidebar-wrapper .list-group-item {
+    border-radius: 0 !important;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    padding-left: 1.5rem !important;
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background: linear-gradient(90deg, #04AA6D, #039c5f) !important;
+    font-weight: 600;
+    border-left: 4px solid #ffc107;
+}
+/* ============================
+   Utility Classes
+============================ */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.rounded-lg {
+    border-radius: 15px;
+}
+
+body.theme-dark {
+    background: #23262b;
+    color: #f8fafd;
+}
+
+body.theme-dark #sidebar-wrapper {
+    background: #262a31;
+    color: #f8fafd;
+    box-shadow: 3px 0 18px rgba(20,20,32,0.13);
+}
+
+body.theme-dark .card, 
+body.theme-dark .card-header, 
+body.theme-dark .card-footer {
+    background: #262a31;
+    color: #f6f7fa;
+    box-shadow: 0 6px 34px rgba(16,18,26,.25);
+    border: none;
+}
+
+body.theme-dark .navbar {
+    background: #21242b !important;
+    color: #e0e6ed;
+    border-bottom: 1.5px solid #35383e;
+}
+
+body.theme-dark .list-group-item {
+    background: transparent !important;
+    color: #e7eaef !important;
+    border: none;
+    transition: background 0.25s, color 0.25s;
+}
+body.theme-dark .list-group-item:hover,
+body.theme-dark .list-group-item.active {
+    background: #2f3340 !important;
+    color: #ffe066 !important;
+    border-left: 4px solid #ffe066;
+}
+
+body.theme-dark .form-control {
+    background: #22242a;
+    color: #fff;
+    border: 1.6px solid #363d48;
+}
+body.theme-dark .form-control:focus {
+    background: #23262b;
+    border-color: #4de2c0;
+    box-shadow: 0 0 0 0.12rem #4de2c085;
+    color: #fff;
+}
+
+body.theme-dark .btn {
+    background: #42454a;
+    color: #fff;
+    border: none;
+}
+body.theme-dark .btn-success {
+    background: #359f7a;
+    color: #fff;
+}
+body.theme-dark .btn-success:hover {
+    background: #26c281;
+    color: #fff;
+}
+
+body.theme-dark .dropdown-menu {
+    background: #24262a;
+    color: #eee;
+}
+body.theme-dark .dropdown-item {
+    color: #f8fafd;
+}
+body.theme-dark .dropdown-item:hover {
+    background: #343a40 !important;
+    color: #ffe066 !important;
+}
+
+body.theme-dark .alert {
+    background: #31353f;
+    color: #fff3cd;
+    border: 1px solid #33374b;
+}
+
+/* Versi terang tetap seperti aslinya */
+body.theme-light {
+    background: #f8f9fa;
+    color: #212529;
+}
+
+#toggle-theme {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-group-item.active {
+    background-color: #198754 !important; /* Bootstrap green */
+    color: #fff !important;
+    border-left: 4px solid #ffc107;
+    font-weight: 600;
+}
+

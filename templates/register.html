@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Register - LaporIN{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h4 class="mb-0 fw-bold">
+                        <i class="bi bi-person-plus-fill"></i> Daftar Akun Baru
+                    </h4>
+                    <small class="d-block mt-1">LaporIN - Sistem Pelaporan Fasilitas Publik</small>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ 'danger' if category == 'danger' else 'success' if category == 'success' else 'info' }} alert-dismissible fade show small" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Form Register -->
+                    <form method="POST" novalidate>
+                        <!-- Nama Lengkap -->
+                        <div class="mb-3">
+                            <label for="nama_lengkap" class="form-label fw-semibold">
+                                <i class="bi bi-person"></i> Nama Lengkap <span class="text-danger">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="nama_lengkap"
+                                name="nama_lengkap"
+                                class="form-control form-control-lg"
+                                placeholder="Masukkan nama lengkap"
+                                required
+                                autofocus
+                            >
+                            <div class="invalid-feedback">
+                                Nama lengkap wajib diisi!
+                            </div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-semibold">
+                                <i class="bi bi-person-badge"></i> Username <span class="text-danger">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                class="form-control form-control-lg"
+                                placeholder="Pilih username unik"
+                                minlength="3"
+                                required
+                            >
+                            <div class="form-text">Minimal 3 karakter, hanya huruf, angka, dan underscore.</div>
+                            <div class="invalid-feedback">
+                                Username tidak valid atau sudah digunakan!
+                            </div>
+                        </div>
+
+                        <!-- No. Telepon (WAJIB) -->
+                        <div class="mb-3">
+                            <label for="no_telp" class="form-label fw-semibold">
+                                <i class="bi bi-telephone"></i> No. Telepon <span class="text-danger">*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                id="no_telp"
+                                name="no_telp"
+                                class="form-control form-control-lg"
+                                placeholder="08123456789"
+                                pattern="[0-9]{10,13}"
+                                minlength="10"
+                                maxlength="13"
+                                required
+                            >
+                            <div class="form-text">Wajib diisi, format: 10-13 digit angka (contoh: 081234567890)</div>
+                            <div class="invalid-feedback">
+                                Nomor telepon harus 10-13 digit angka!
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">
+                                <i class="bi bi-envelope"></i> Email <span class="text-danger">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control form-control-lg"
+                                placeholder="nama@contoh.com"
+                                required
+                            >
+                            <div class="invalid-feedback">
+                                Email tidak valid atau sudah terdaftar!
+                            </div>
+                        </div>
+<!-- Password -->
+<div class="mb-3">
+    <label for="password" class="form-label fw-semibold">
+        <i class="bi bi-lock"></i> Password <span class="text-danger">*</span>
+    </label>
+    <div class="input-group">
+        <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control form-control-lg"
+            placeholder="Minimal 6 karakter"
+            minlength="6"
+            required
+        >
+        <button
+            type="button"
+            class="btn btn-outline-secondary"
+            id="togglePasswordBtn"
+            tabindex="-1"
+        >
+            <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+        </button>
+    </div>
+    <div class="form-text">Kombinasi huruf & angka lebih aman.</div>
+</div>
+
+<!-- Konfirmasi Password -->
+<div class="mb-3">
+    <label for="confirm_password" class="form-label fw-semibold">
+        <i class="bi bi-lock-fill"></i> Konfirmasi Password <span class="text-danger">*</span>
+    </label>
+    <div class="input-group">
+        <input
+            type="password"
+            id="confirm_password"
+            name="confirm_password"
+            class="form-control form-control-lg"
+            placeholder="Ketik ulang password"
+            required
+        >
+        <button
+            type="button"
+            class="btn btn-outline-secondary"
+            id="toggleConfirmPasswordBtn"
+            tabindex="-1"
+        >
+            <i class="bi bi-eye-slash" id="toggleConfirmPasswordIcon"></i>
+        </button>
+    </div>
+    <div class="invalid-feedback">
+        Password tidak cocok!
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Toggle password utama
+    document.getElementById('togglePasswordBtn').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const icon = document.getElementById('togglePasswordIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        }
+    });
+
+    // Toggle konfirmasi password
+    document.getElementById('toggleConfirmPasswordBtn').addEventListener('click', function () {
+        const confirmPasswordInput = document.getElementById('confirm_password');
+        const icon = document.getElementById('toggleConfirmPasswordIcon');
+        if (confirmPasswordInput.type === 'password') {
+            confirmPasswordInput.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            confirmPasswordInput.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        }
+    });
+});
+</script>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">
+                            <i class="bi bi-check-circle"></i> Daftar Sekarang
+                        </button>
+                    </form>
+
+                   <div class="text-center" style="margin-top:12px;">
+                    <p class="mb-0 text-muted">Sudah punya akun?</p>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-success btn-sm mt-2">
+                        <i class="bi bi-box-arrow-in-right"></i> Login di Sini
+                    </a>
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-4 text-muted small">
+                © 2025 LaporIN - Dibuat untuk Kemudahan Masyarakat
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

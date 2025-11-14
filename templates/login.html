@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Login - LaporIN{% endblock %}
+
+{% block content %}
+<!-- Wrapper agar card login selalu di tengah -->
+<div class="login-container">
+    <div class="col-md-5 col-lg-4">
+        <div class="card shadow-lg border-0 rounded-lg">
+            
+            <!-- Header -->
+            <div class="card-header text-white text-center py-4">
+                <h3 class="mb-0 fw-bold">
+                   <i class="bi bi-building"></i> LaporIN
+                </h3>
+                <small class="d-block mt-1 text-light">Sistem Pelaporan Fasilitas Publik</small>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body p-4">
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'danger' if category == 'danger' else 'warning' if category == 'error' else 'info' }} alert-dismissible fade show small" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                       <!-- Ikon dan Judul Login -->
+                <div class="text-center login-title">
+                    <i class="bi bi-person-circle text-success" style="font-size: 2.8rem;"></i>
+                    <h4 class="mt-2 fw-semibold text-dark">Masuk ke Akun Anda</h4>
+                    <p class="text-muted small mb-0">Silakan login untuk melanjutkan ke dashboard</p>
+                </div>
+
+
+                <!-- Form Login -->
+                <form method="POST" novalidate>
+                    <div class="mb-3">
+                        <label for="identifier" class="form-label fw-semibold">
+                            <i class="bi bi-person-badge"></i> Email atau Username
+                        </label>
+                        <input 
+                            type="text" 
+                            id="identifier" 
+                            name="identifier" 
+                            class="form-control form-control-lg rounded-lg" 
+                            placeholder="Masukkan email atau username Anda" 
+                            required 
+                            autofocus
+                        >
+                    </div>
+
+
+                    <div class="mb-3 position-relative">
+                    <label for="password" class="form-label fw-semibold">
+                        <i class="bi bi-lock"></i> Password
+                    </label>
+                    <div class="input-group">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control form-control-lg rounded-start-lg" 
+                            placeholder="••••••••" 
+                            required
+                        >
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-secondary rounded-end-lg" 
+                            id="togglePassword" 
+                            tabindex="-1"
+                        >
+                            <i class="bi bi-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+                    <button type="submit" class="btn btn-success btn-lg w-100 fw-bold rounded-lg">
+                        <i class="bi bi-box-arrow-in-right"></i> Masuk
+                    </button>
+                </form>
+
+                <!-- Links -->
+                <div class="mt-4 text-center">
+                    <a href="{{ url_for('forgot') }}" class="text-decoration-none small text-muted">
+                        Lupa Password?
+                    </a>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="text-center">
+                    <p class="mb-0 text-muted">Belum punya akun?</p>
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-primary btn-sm mt-2 rounded-lg">
+                        <i class="bi bi-person-plus"></i> Daftar Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Kecil -->
+        <div class="text-center mt-4 text-muted small">
+            &copy; 2025 LaporIN - Dibuat untuk Kemudahan Masyarakat
+        </div>
+    </div>
+</div>
+{% endblock %}
